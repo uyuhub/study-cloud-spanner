@@ -1,6 +1,7 @@
+#!/usr/bin/env bash
 set -eu
 
-sleep 5
+sleep 10
 gcloud config configurations create emulator
 gcloud config set auth/disable_credentials true
 gcloud config set project ${SPANNER_PROJECT_ID}

@@ -8,10 +8,10 @@ services:
       - "9020:9020"
 
   # Spanner Init Config
-  gcloud-spanner-lint:
+  gcloud-spanner-init:
     image: gcr.io/google.com/cloudsdktool/cloud-sdk:366.0.0-slim
     entrypoint: ["/spanner-init.sh"]
-    environment: 
+    environment:
       SPANNER_PROJECT_ID: ${SPANNER_PROJECT_ID}
       SPANNER_INSTANCE_ID: ${SPANNER_INSTANCE_ID}
       SPANNER_EMULATOR_URL: ${SPANNER_EMULATOR_URL}
