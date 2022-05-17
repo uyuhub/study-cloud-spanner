@@ -23,6 +23,6 @@ resetdb:
 .PHONY: lint 
 lint:
 	# golangci-lint run ./...
-	go vet -vettool=$(shell which zagane) github.com/uyuhub/cloud-spanner/infra/spanner
+	# go vet -vettool=$(shell which zagane) github.com/uyuhub/cloud-spanner/infra/spanner
 
 
