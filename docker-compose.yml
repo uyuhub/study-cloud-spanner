@@ -17,7 +17,7 @@ services:
       SPANNER_EMULATOR_URL: ${SPANNER_EMULATOR_URL}
       SPANNER_DATABASE_ID: ${SPANNER_DATABASE_ID}
     volumes:
-      - ./spanner-init.sh:/spanner-init.sh
+      - ./script/spanner-init.sh:/spanner-init.sh
     depends_on:
       - spanner
 

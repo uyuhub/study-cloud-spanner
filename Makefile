@@ -1,8 +1,6 @@
 .PHONY: setup
 setup:
-	go install github.com/cosmtrek/air@latest
-	go install github.com/cloudspannerecosystem/wrench@v1.0.4
-	# go install go.mercari.io/yo/v2@latest
+	bash ./script/setup.sh
 .PHONY: env
 env:
 	cp develop.env .envrc
@@ -22,8 +20,9 @@ resetdb:
 	wrench reset --directory ./ddl
 	wrench migrate up --directory ./ddl
 
-.PHONY: 
-resetdb:
-	wrench reset --directory ./ddl
-	wrench migrate up --directory ./ddl
+.PHONY: lint 
+lint:
+	# golangci-lint run ./...
+	go vet -vettool=$(shell which zagane) github.com/uyuhub/cloud-spanner/infra/spanner
+
 
