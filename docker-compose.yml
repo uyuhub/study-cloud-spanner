@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  # Spanner Emulator
+  spanner:
+    image: gcr.io/cloud-spanner-emulator/emulator:1.4.0
+    ports:
+      - "9010:9010"
+      - "9020:9020"
+
+  # Spanner Init Config
+  gcloud-spanner-lint:
+    image: gcr.io/google.com/cloudsdktool/cloud-sdk:366.0.0-slim
+    entrypoint: ["/spanner-init.sh"]
+    environment: 
+      SPANNER_PROJECT_ID: ${SPANNER_PROJECT_ID}
+      SPANNER_INSTANCE_ID: ${SPANNER_INSTANCE_ID}
+      SPANNER_EMULATOR_URL: ${SPANNER_EMULATOR_URL}
+      SPANNER_DATABASE_ID: ${SPANNER_DATABASE_ID}
+    volumes:
+      - ./spanner-init.sh:/spanner-init.sh
+    depends_on:
+      - spanner
+
+  # Spanner CLI
+  spanner-cli:
+    image: sjdaws/spanner-cli:v1.0.0
+    environment:
+      SPANNER_EMULATOR_HOST: "spanner:9010"
+    command: ['sh','-c','echo this container keep running && tail -f /dev/null']
