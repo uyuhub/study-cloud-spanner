@@ -35,6 +35,12 @@ make createdb
 make resetdb
 ```
 
+##### generate yo code for a schema from spanner
+```
+yo $SPANNER_PROJECT_ID $SPANNER_INSTANCE_ID $SPANNER_DATABASE_ID -o src/app/models
+```
+
+
 # 困った時
 
 ##### 「OCI runtime create failed」「" 〜 permission denied": unknown.」 と言われたとき
