@@ -1,6 +1,7 @@
 .PHONY: setup
 setup:
 	bash ./script/setup.sh
+
 .PHONY: env
 env:
 	cp develop.env .envrc
