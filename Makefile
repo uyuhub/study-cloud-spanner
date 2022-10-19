@@ -4,7 +4,7 @@ setup:
 
 .PHONY: env
 env:
-	cp develop.env .envrc
+	cp .envrc-develop .envrc
 	direnv allow .
 
 .PHONY: spanner
